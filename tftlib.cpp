@@ -5,7 +5,7 @@
 #define TFTWIDTH   240
 #define TFTHEIGHT  400
 
-TFTLCD::TFTLCD()
+TFTLCD::TFTLCD() : Adafruit_GFX(TFTWIDTH, TFTHEIGHT)
 {
 #ifdef ELECFREAKS_TFT_SHIELD_V2
 	for(int p=22; p<42; p++) {
@@ -37,8 +37,6 @@ TFTLCD::TFTLCD()
 
 void TFTLCD::begin()
 {
-	constructor(TFTWIDTH, TFTHEIGHT);
-
 	reset();
 	CS_ACTIVE;
 	writeRegister16(0x0083, 0x0002);
